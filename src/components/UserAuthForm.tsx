@@ -9,7 +9,6 @@ const UserAuthForm: FC<UserAuthFormProps> = ({ className, ...props }) => {
 
   return (
     <>
-      {/* Sign in Container */}
       <div className="bg-white px-16 py-16 self-center mt-16 lg:w-4/5 lg:max-w-lg rounded-md w-full gap-5 shadow-lg">
         <h2 className="text-black text-4xl mb-8 font-semibold">Login</h2>
         <div className="flex flex-col gap-4">

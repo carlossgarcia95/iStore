@@ -2,6 +2,7 @@
 
 import { User2 } from "lucide-react";
 import Link from "next/link";
+import { LogOut, Settings, AreaChart, Heart, Box } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,12 +11,11 @@ import {
   DropdownMenuTrigger,
 } from "@/src/components/ui/DropdownMenu";
 
-
 export function UserMenu() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <User2 className="hover:cursor-pointer text-slate-700" size={25}/>
+        <User2 className="hover:cursor-pointer text-slate-700" size={25} />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="bg-white" align="end">
         <div className="flex items-center justify-start gap-2 p-2">
@@ -28,20 +28,38 @@ export function UserMenu() {
         </div>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href="/">Your orders</Link>
+          <Link href="/favorites">
+            {" "}
+            <Heart className="mr-2 h-4 w-4" />
+            Favorites
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link href="/orders">
+            {" "}
+            <Box className="mr-2 h-4 w-4" />
+            Orders
+          </Link>
         </DropdownMenuItem>
 
         <DropdownMenuItem asChild>
-          <Link href="/r/create">Admin Dashboard</Link>
+          <Link href="/dashboard">
+            {" "}
+            <AreaChart className="mr-2 h-4 w-4" />
+            Admin Dashboard
+          </Link>
         </DropdownMenuItem>
 
         <DropdownMenuItem asChild>
-          <Link href="/settings">Settings</Link>
+          <Link href="/settings">
+            {" "}
+            <Settings className="mr-2 h-4 w-4" />
+            Settings
+          </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem
-          className="cursor-pointer"
-        >
+        <DropdownMenuItem className="cursor-pointer">
+          <LogOut className="mr-2 h-4 w-4" />
           Sign out
         </DropdownMenuItem>
       </DropdownMenuContent>{" "}
