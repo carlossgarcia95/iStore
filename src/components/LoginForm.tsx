@@ -17,14 +17,18 @@ const LoginForm = () => {
       <Input type="text" placeholder="Email" className="border" />
       <Input type="text" placeholder="Password" className="border" />
       <Button>Login</Button>
-      <p className="self-center text-slate-500">or log in with </p>
+      <div className="flex items-center justify-center gap-2">
+        <hr className="border w-full border-teal-500" />
+        <p className="self-center text-center text-slate-500 w-96">or log in with </p>
+        <hr className="border w-full border-teal-500" />
+      </div>
       <Button className="gap-2" variant={"subtle"}>
         <FcGoogle size={24} />
         Google
       </Button>
       <p className="text-slate-500">
         Don't have an account?{" "}
-        <Link href="/register" className="hover:underline text-teal-600">
+        <Link href="/register" className="hover:underline text-teal-600 font-bold">
           Register
         </Link>
       </p>

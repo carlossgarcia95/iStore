@@ -16,14 +16,18 @@ const RegisterForm = () => {
       <Input type="email" placeholder="Email" />
       <Input type="password" placeholder="Password" />
       <Button>Register</Button>
-      <p className="self-center text-slate-500">or sign up with </p>
+      <div className="flex items-center justify-center gap-2">
+        <hr className="border w-full border-teal-500" />
+        <p className="self-center text-center text-slate-500 w-96">or sign up with </p>
+        <hr className="border w-full border-teal-500" />
+      </div>
       <Button className="gap-2" variant={"subtle"}>
         <FcGoogle size={24} />
         Google
       </Button>
       <p className="text-slate-500">
         Already have an account?{" "}
-        <Link href="/login" className="hover:underline text-teal-600">
+        <Link href="/login" className="hover:underline text-teal-600 font-bold">
           Log In
         </Link>
       </p>

@@ -9,8 +9,8 @@ import {
 const Footer = () => {
   return (
     <footer
-      className="bg-slate-200
-    text-slate-800 text-sm mt-16"
+      className="bg-slate-600
+    text-white text-sm mt-16"
     >
       <div className="container p-10 md:p-14 ld:p-20">
         <div className="grid grid-cols-2 md:grid-cols-4 md:flex-row gap-4">
@@ -39,18 +39,18 @@ const Footer = () => {
           </div>
           <div className="md:ml-4">
             <h3 className="font-bold mb-2">Follow Us</h3>
-            <div className="flex gap-2">
+            <div className="flex gap-2 items-center">
               <Link href="#">
-                <MdFacebook size={23} />
+                <MdFacebook size={23}/>
               </Link>
               <Link href="#">
                 <AiFillTwitterCircle size={23} />
               </Link>
               <Link href="#">
-                <AiFillInstagram size={24} />
+                <AiFillInstagram size={25} />
               </Link>
               <Link href="#">
-                <AiFillYoutube size={24} />
+                <AiFillYoutube size={30} />
               </Link>
             </div>
           </div>
