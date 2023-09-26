@@ -1,7 +1,7 @@
 "use client";
 
-import { formatPrice } from "../utils/formatPrice";
-import { truncateText } from "../utils/truncateText";
+import { formatPrice } from "../../utils/formatPrice";
+import { truncateText } from "../../utils/truncateText";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import Image from "next/image";
 import { useRouter } from "next/navigation";

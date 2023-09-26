@@ -4,7 +4,7 @@ import { useState } from "react";
 import FilterMenu from "../components/FilterMenu";
 import HomeBanner from "../components/HomeBanner";
 import { products } from "../utils/products";
-import ProductCard from "../components/ProductCard";
+import ProductCard from "../components/product/ProductCard";
 
 export default function Home() {
   const [filteredProducts, setFilteredProducts] = useState(products);

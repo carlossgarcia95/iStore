@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { CiShoppingCart } from "react-icons/ci";
 import {LiaShoppingBagSolid} from 'react-icons/lia'
+import { useCart } from "@/src/hooks/useCart";
 
 const CartCount = () => {
   const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
+  const {cartTotalQty} = useCart()
   const router = useRouter();
 
   return (
@@ -22,7 +24,7 @@ const CartCount = () => {
             btnIsHighlighted ? "bg-black text-white " : ""
           }`}
         >
-          2
+          {cartTotalQty}
         </span>
         <LiaShoppingBagSolid size={28} className='text-slate-700'/>
       </div>

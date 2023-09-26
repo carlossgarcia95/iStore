@@ -12,7 +12,7 @@ const Footer = () => {
       className="bg-slate-600
     text-white text-sm mt-16"
     >
-      <div className="container p-10 md:p-14 ld:p-20">
+      <div className="container py-10">
         <div className="grid grid-cols-2 md:grid-cols-4 md:flex-row gap-4">
           <div className="flex flex-col gap-2">
             <h3 className="font-bold mb-2">Categoies</h3>
@@ -36,6 +36,10 @@ const Footer = () => {
             <p className="mb-2">
               We are dedicated to shipping only the highest quality products.
             </p>
+            <p className="hidden mt-4 md:block">
+          &copy; {new Date().getFullYear()} iStore. All rights reserved.
+        </p>
+            <p></p>
           </div>
           <div className="md:ml-4">
             <h3 className="font-bold mb-2">Follow Us</h3>
@@ -55,7 +59,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <p className="text-center mt-4">
+        <p className="text-center mt-4 md:hidden">
           &copy; {new Date().getFullYear()} iStore. All rights reserved.
         </p>
       </div>
