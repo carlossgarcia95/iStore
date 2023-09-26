@@ -26,7 +26,7 @@ export default function Home() {
       <div className="md:container mx-2">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-2 md:gap-8">
           {filteredProducts.map((product: any) => {
-            return <ProductCard data={product} />;
+            return <ProductCard key={product.id} data={product} />;
           })}
         </div>
       </div>

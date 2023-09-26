@@ -10,8 +10,15 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/src/components/ui/DropdownMenu";
+import { signOut } from "next-auth/react";
+import { User } from "next-auth";
 
-export function UserMenu() {
+interface UserMenuProps {
+  user: User
+}
+
+export function UserMenu({user}: UserMenuProps) {
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -20,9 +27,9 @@ export function UserMenu() {
       <DropdownMenuContent className="bg-white" align="end">
         <div className="flex items-center justify-start gap-2 p-2">
           <div className="flex flex-col space-y-1 leading-none">
-            <p className="font-medium">Carlos Garcia</p>
+            <p className="font-medium">{user.name}</p>
             <p className="w-[200px] truncate text-sm text-muted-foreground">
-              carlosgarcia@hotmail.com
+              {user.email}
             </p>
           </div>
         </div>
@@ -58,7 +65,15 @@ export function UserMenu() {
           </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer">
+        <DropdownMenuItem
+          onSelect={(event) => {
+            event.preventDefault();
+            signOut({
+              callbackUrl: `${window.location.origin}/sign-in`,
+            });
+          }}
+          className="cursor-pointer"
+        >
           <LogOut className="mr-2 h-4 w-4" />
           Sign out
         </DropdownMenuItem>

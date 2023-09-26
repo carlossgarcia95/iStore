@@ -6,7 +6,7 @@ import LoginForm from "@/src/components/LoginForm";
 const page = () => {
   return (
     <div className="fixed inset-0 bg-zinc-900/20 z-30">
-      <div className="container flex items-center h-full max-w-lg mx-auto">
+      <div className="container flex items-center h-full max-w-lg mx-auto animate-slide-down">
         <div className="relative bg-white w-full h-fit py-6 rounded-2xl">
           <LoginForm />
         </div>
