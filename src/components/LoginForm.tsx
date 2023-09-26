@@ -8,18 +8,25 @@ import { FcGoogle } from "react-icons/fc";
 import Heading from "./ui/Heading";
 import { signIn } from "next-auth/react";
 import { useToast } from "../hooks/useToast";
+import { useCallback, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
-  const {toast} = useToast()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { toast } = useToast();
+  const router = useRouter();
 
-  const googleLogin = async () => {
-    await signIn('google')
-    toast({
-      title: 'Logged In',
-      description: 'You have successfully logged in'
-    })
-    
-  }
+  const login = useCallback(async () => {
+    try {
+      await signIn("credentials", {
+        email,
+        password,
+      });
+    } catch (error) {
+      error;
+    }
+  }, [email, password]);
 
   return (
     <div className="mx-auto flex w-full flex-col justify-center gap-6 px-8 py-2">
@@ -27,9 +34,21 @@ const LoginForm = () => {
         <Heading title="Login" />
         <CloseModal />
       </div>
-      <Input type="text" placeholder="Email" className="border" />
-      <Input type="text" placeholder="Password" className="border" />
-      <Button>Login</Button>
+      <Input
+        type="text"
+        placeholder="Email"
+        className="border"
+        onChange={(e) => setEmail(e.target.value)}
+        value={email}
+      />
+      <Input
+        type="password"
+        placeholder="Password"
+        className="border"
+        onChange={(e) => setPassword(e.target.value)}
+        value={password}
+      />
+      <Button onClick={() => login()}>Login</Button>
       <div className="flex items-center justify-center gap-2">
         <hr className="border w-full border-teal-500" />
         <p className="self-center text-center text-slate-500 w-96">
@@ -40,7 +59,7 @@ const LoginForm = () => {
       <Button
         className="gap-2"
         variant={"subtle"}
-        onClick={googleLogin}
+        onClick={() => signIn("google")}
       >
         <FcGoogle size={24} />
         Google
