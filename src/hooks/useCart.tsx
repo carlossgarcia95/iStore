@@ -82,7 +82,7 @@ export const CartContextProvider = (props: Props) => {
       }
       // Success. Send user feedback and add cart item to local storage
       toast({
-        title: "Product added to Cart",
+        description: "Product added to Cart",
       });
       localStorage.setItem("iStoreCartItems", JSON.stringify(updatedCart));
       return updatedCart;
@@ -97,7 +97,7 @@ export const CartContextProvider = (props: Props) => {
         });
         setCartProducts(filteredProducts);
         toast({
-          title: "Product removed from Cart",
+          description: "Product removed from Cart",
         });
         localStorage.setItem(
           "iStoreCartItems",
@@ -112,7 +112,7 @@ export const CartContextProvider = (props: Props) => {
     (product: CartProductType) => {
       if (product.quantity === 99) {
         toast({
-          title: "Oops! Maximum amount reached",
+          description: "Oops! Maximum amount reached",
           variant: "destructive",
         });
       }

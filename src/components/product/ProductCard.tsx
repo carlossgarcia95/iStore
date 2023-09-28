@@ -6,6 +6,7 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { Card } from "../ui/Card";
 
 interface ProductCardProps {
   data: any;
@@ -16,7 +17,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
   const router = useRouter();
 
   return (
-    <div
+    <Card
       onClick={() => router.push(`product/${data.id}`)}
       className="relative col-span-1 cursor-pointer border-[1px] bg-white rounded-xl p-4 transition hover:scale-105 text-center text-sm"
     >
@@ -46,7 +47,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
           <div className="font-bold">{formatPrice(data.price)}</div>
         </div>
       </div>
-    </div>
+    </Card>
   );
 };
 

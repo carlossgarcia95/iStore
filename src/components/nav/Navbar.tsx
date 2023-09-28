@@ -17,7 +17,7 @@ const Navbar = async () => {
         <div className="flex items-center gap-2 md:gap-6">
           <CartCount />
           {session?.user ? (
-            <UserMenu user={session.user}/>
+            <UserMenu user={session?.user}/>
           ) : (
             <Link href="/login" className={buttonVariants()}>
               Log In

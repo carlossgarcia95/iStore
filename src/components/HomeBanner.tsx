@@ -1,8 +1,9 @@
 import Image from "next/image";
+import { Card } from "./ui/Card";
 
 const HomeBanner = () => {
   return (
-    <div className="relative m-2 md:m-6 rounded-lg bg-gradient-to-r from-teal-900 to-teal-300 shadow-md">
+    <Card className="relative m-2 md:m-6 rounded-lg bg-gradient-to-r from-purple-900 to-blue-500 shadow-md">
       <div className="mx-auto px-8 py-12 flex flex-col gap-2 md:flex-row items-center justify-evenly">
         <div className="mb-8 md:mb-0 text-center">
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4">
@@ -24,7 +25,7 @@ const HomeBanner = () => {
           />
         </div>
       </div>
-    </div>
+    </Card>
   );
 };
 

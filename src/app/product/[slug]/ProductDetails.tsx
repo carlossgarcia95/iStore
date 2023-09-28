@@ -11,6 +11,7 @@ import SetQuantity from "@/src/components/product/SetQuantity";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import Heading from "@/src/components/ui/Heading";
+import { Card } from "@/src/components/ui/Card";
 
 interface ProductDetailsProps {
   product: any;
@@ -83,25 +84,25 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
   }, [cartProduct]);
 
   const Horizontal = () => {
-    return <hr className="w-full max-w-[300px] my-2" />;
+    return <hr className="w-full my-2" />;
   };
  
   return (
-    <>
+    <div>
       <div className="mb-4">
-        <Link className={buttonVariants({ variant: "ghost" })} href={"/"}>
+        <Link className={buttonVariants({ variant: "link" })} href={"/"}>
           <ChevronLeft className="h-4 w-4 mr-1" />
           Shop
         </Link>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+      <Card className="flex flex-col mx-auto md:flex-row gap-6 items-center p-10 max-w-5xl">
         <ProductImage
           cartProduct={cartProduct}
           product={product}
           handleColorSelect={handleColorSelect}
         />
         <div className="flex flex-col gap-2 md:gap-4 text-zinc-600">
-          <h2 className="text-3xl font-medium text-zinc-700">{product.name}</h2>
+          <h2 className="text-2xl font-medium text-zinc-700 text-center md:text-3xl">{product.name}</h2>
           <Horizontal />
           <div className="text-justify">{product.description}</div>
           <Horizontal />
@@ -143,7 +144,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
                 handleQtyDecrease={handleQtyDecrease}
               />
               <Horizontal />
-              <div className="max-w-[300px]">
+              <div className="w-full">
                 <Button
                   onClick={() => handleAddProductToCart(cartProduct)}
                   className="w-full"
@@ -154,11 +155,8 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
             </>
           )}
         </div>
-      </div>
-      <div className="mt-8">
-        <Heading title="Similar Products"/>
-      </div>
-    </>
+      </Card>
+    </div>
   );
 };
 
