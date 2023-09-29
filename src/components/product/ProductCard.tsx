@@ -2,49 +2,45 @@
 
 import { formatPrice } from "../../utils/formatPrice";
 import { truncateText } from "../../utils/truncateText";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { Card } from "../ui/Card";
+import FavoriteButton from "../FavoriteButton";
 
 interface ProductCardProps {
-  data: any;
+  product: any;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const router = useRouter();
 
   return (
-    <Card
-      onClick={() => router.push(`product/${data.id}`)}
-      className="relative col-span-1 cursor-pointer border-[1px] bg-white rounded-xl p-4 transition hover:scale-105 text-center text-sm"
-    >
-      <div
-        onClick={() => setIsFavorite(!isFavorite)}
-        className="absolute z-10 right-[8px] top-[8px]"
-      >
-        {isFavorite ? (
-          <AiFillHeart size={25} className='text-teal-500' />
-        ) : (
-          <AiOutlineHeart size={25} className="text-teal-500" />
-        )}
-      </div>
-
+    <Card className="relative col-span-1 border-[1px] bg-white rounded-xl p-4 transition text-center text-sm">
       <div className="flex flex-col items-center w-full gap-1">
-        <div className="aspect-square overflow-hidden relative w-full my-2">
+        <div
+          onClick={() => router.push(`product/${product.id}`)}
+          className="aspect-square cursor-pointer overflow-hidden relative w-full my-2 hover:scale-105"
+        >
           <Image
             fill
-            src={data.images[0].image}
+            src={product.images[0].image}
             alt="data.name"
             className="w-full h-full object-contain"
           />
         </div>
         <hr className="border w-full" />
-        <div className="w-full rounded-md">
-          <div className="mt-2">{truncateText(data.name)}</div>
-          <div className="font-bold">{formatPrice(data.price)}</div>
+        <div className="relative w-full rounded-md text-left">
+          <div
+            onClick={() => router.push(`product/${product.id}`)}
+            className="mt-2 hover:underline cursor-pointer"
+          >
+            {truncateText(product.name)}
+          </div>
+
+          <div className="font-bold text-orange-600">{formatPrice(product.price)}</div>
+          <div className="absolute right-0 top-4">
+            <FavoriteButton productId={product.id} />
+          </div>
         </div>
       </div>
     </Card>

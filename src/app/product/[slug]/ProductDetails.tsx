@@ -10,7 +10,6 @@ import SetColor from "@/src/components/product/SetColor";
 import SetQuantity from "@/src/components/product/SetQuantity";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
-import Heading from "@/src/components/ui/Heading";
 import { Card } from "@/src/components/ui/Card";
 
 interface ProductDetailsProps {
@@ -86,7 +85,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
   const Horizontal = () => {
     return <hr className="w-full my-2" />;
   };
- 
+
   return (
     <div>
       <div className="mb-4">
@@ -102,7 +101,9 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
           handleColorSelect={handleColorSelect}
         />
         <div className="flex flex-col gap-2 md:gap-4 text-zinc-600">
-          <h2 className="text-2xl font-medium text-zinc-700 text-center md:text-3xl">{product.name}</h2>
+          <h2 className="text-2xl font-medium text-zinc-700 text-center md:text-3xl">
+            {product.name}
+          </h2>
           <Horizontal />
           <div className="text-justify">{product.description}</div>
           <Horizontal />
@@ -117,18 +118,16 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
           {isProductInCart ? (
             <>
               <p className="mb-2 text-zinc-500 flex items-center gap-1">
-                <MdCheckCircle size={20} className="text-zinc-700" />
+                <MdCheckCircle size={20} className="text-teal-500" />
                 <span>Product added to cart</span>
               </p>
-              <div className="max-w-[300px]">
-                <Button
-                  onClick={() => router.push("/cart")}
-                  className="w-full"
-                  variant={"outline"}
-                >
-                  View Cart
-                </Button>
-              </div>
+              <Button
+                onClick={() => router.push("/cart")}
+                className="w-full"
+                variant={"outline"}
+              >
+                View Cart
+              </Button>
             </>
           ) : (
             <>

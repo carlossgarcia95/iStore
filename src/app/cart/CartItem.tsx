@@ -21,7 +21,7 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
   return (
     <TableRow>
       <TableCell>
-        <div className="flex flex-col md:flex-row items-start md:items-center gap-2">
+        <div className="flex flex-col my-2 md:flex-row items-start md:items-center gap-2">
           <Link href={`/product/${item.id}`}>
             <div className="relative w-[70px] aspect-square">
               <Image

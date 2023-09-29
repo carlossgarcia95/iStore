@@ -1,5 +1,5 @@
-import { products } from "@/src/utils/products";
 import ProductDetails from "@/src/app/product/[slug]/ProductDetails";
+import { db } from "@/src/lib/db";
 
 interface PageProps {
   params: {
@@ -7,11 +7,15 @@ interface PageProps {
   };
 }
 
-const page = ({ params }: PageProps) => {
+const page = async ({ params }: PageProps) => {
   const { slug } = params;
-  const product = products.find((item) => item.id === slug);
+  const product = await db.product.findFirst({
+    where: {
+      id: slug,
+    },
+  });
   return (
-    <div className="container p-8">
+    <div className="mx-2 md:container">
       <ProductDetails product={product} />
       <div className="flex flex-col mt-20 gap-4"></div>
     </div>

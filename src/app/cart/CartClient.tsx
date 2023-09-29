@@ -40,7 +40,7 @@ const CartClient = () => {
     <>
       <Heading title="Cart" center />
       {cartProducts?.length === 0 && <div className="mb-4"></div>}
-        <Card className="mt-8 p-4">
+        <Card className="mt-8 p-2 md:p-8 ">
           <Table>
             <TableHeader>
               <TableRow>
@@ -55,7 +55,7 @@ const CartClient = () => {
               })}
             </TableBody>
           </Table>
-          <div className="border-t-[1.5px] border-zinc-200 py-4 flex flex-col-reverse w-full md:flex-row justify-between gap-1">
+          <div className="border-t-[1.5px] border-black pt-4 flex flex-col-reverse w-full md:flex-row justify-between gap-1">
             <Button
               variant={"destructive"}
               size={"sm"}

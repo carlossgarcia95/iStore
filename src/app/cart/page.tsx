@@ -5,7 +5,7 @@ import CartClient from "./CartClient";
 // for more info.
 const Page = () => {
   return (
-    <div className="container max-w-5xl pt-8 ">
+    <div className="mx-2 md:container max-w-5xl pt-8 ">
       <CartClient />
     </div>
   );
