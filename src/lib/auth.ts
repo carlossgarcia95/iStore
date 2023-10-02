@@ -63,7 +63,6 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
-
   // Define callbacks for manipulating session and JWT tokens
   callbacks: {
     // Customizes the session object with user information from the JWT token
@@ -73,7 +72,6 @@ export const authOptions: NextAuthOptions = {
         session.user.name = token.name;
         session.user.email = token.email;
         session.user.image = token.picture;
-        session.user.username = token.username;
       }
       return session;
     },

@@ -39,6 +39,7 @@ model User {
     role           Role      @default(USER)
     accounts       Account[]
     Order          Order[]
+
 }
 
 model Product {
