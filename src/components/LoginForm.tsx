@@ -65,7 +65,7 @@ const LoginForm = () => {
         Google
       </Button>
       <p className="text-slate-500">
-        Don't have an account?{" "}
+        Don&apos;t have an account?
         <Link
           href="/register"
           className="hover:underline text-teal-600 font-bold"
