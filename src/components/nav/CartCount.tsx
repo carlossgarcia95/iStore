@@ -10,7 +10,6 @@ const CartCount = () => {
   const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
   const { cartTotalQty } = useCart();
   const router = useRouter();
-  const { toggleCart } = useCart();
 
   return (
     <div
