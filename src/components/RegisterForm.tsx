@@ -11,6 +11,7 @@ import axios from "axios";
 import { useToast } from "../hooks/useToast";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { Signika_Negative } from "next/font/google";
 
 const RegisterForm = () => {
   const [email, setEmail] = useState("");
@@ -71,7 +72,11 @@ const RegisterForm = () => {
         </p>
         <hr className="border w-full border-teal-500" />
       </div>
-      <Button className="gap-2" variant={"subtle"}>
+      <Button
+        onClick={() => signIn("google")}
+        className="gap-2"
+        variant={"subtle"}
+      >
         <FcGoogle size={24} />
         Google
       </Button>

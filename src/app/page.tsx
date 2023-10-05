@@ -1,10 +1,14 @@
+
+
 import HomeBanner from "../components/HomeBanner";
 import ProductCard from "../components/product/ProductCard";
+import useFavoriteIds from "../hooks/useFavorites";
 import { db } from "../lib/db";
 import { Product } from "@prisma/client";
 
 export default async function Home() {
   const products = await db.product.findMany();
+
   return (
     <div>
       <HomeBanner />
