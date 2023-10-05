@@ -9,7 +9,7 @@ import { useCart } from "@/src/hooks/useCart";
 import SetColor from "@/src/components/product/SetColor";
 import SetQuantity from "@/src/components/product/SetQuantity";
 import Link from "next/link";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Ban } from "lucide-react";
 import { Card } from "@/src/components/ui/Card";
 
 interface ProductDetailsProps {
@@ -88,7 +88,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
 
   return (
     <div>
-      <div className="mb-4">
+      <div className="mb-4 mt-6">
         <Link className={buttonVariants({ variant: "link" })} href={"/"}>
           <ChevronLeft className="h-4 w-4 mr-1" />
           Shop
@@ -111,7 +111,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
             <span className="font-semibold">CATEGORY: </span>
             {product.category}
           </div>
-          <div className={product.inStock ? "text-green-600" : "text-rose-400"}>
+          <div className={product.inStock ? "text-green-600" : "text-red-500"}>
             {product.inStock ? "In stock" : "Out of stock"}
           </div>
           <Horizontal />
@@ -144,12 +144,21 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
               />
               <Horizontal />
               <div className="w-full">
-                <Button
-                  onClick={() => handleAddProductToCart(cartProduct)}
-                  className="w-full"
-                >
-                  Add to Cart
-                </Button>
+                {product.inStock ? (
+                  <Button
+                    onClick={() => handleAddProductToCart(cartProduct)}
+                    className="w-full"
+                  >
+                    Add to Cart
+                  </Button>
+                ) : (
+                  <Button
+                    className="w-full disabled:opacity-75 cursor-not-allowed"
+                    disabled
+                  >
+                    Add to Cart
+                  </Button>
+                )}
               </div>
             </>
           )}

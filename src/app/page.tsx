@@ -1,8 +1,5 @@
-
-
 import HomeBanner from "../components/HomeBanner";
 import ProductCard from "../components/product/ProductCard";
-import useFavoriteIds from "../hooks/useFavorites";
 import { db } from "../lib/db";
 import { Product } from "@prisma/client";
 
