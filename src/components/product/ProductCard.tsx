@@ -44,7 +44,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </div>
           {session?.user && (
             <div className="absolute right-0 top-4">
-              <FavoriteButton productId={product.id} user={session.user}/>
+              <FavoriteButton productId={product.id} user={session.user} />
             </div>
           )}
         </div>

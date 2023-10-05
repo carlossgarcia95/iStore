@@ -6,7 +6,7 @@ import { User } from "@prisma/client";
 
 interface FavoriteButtonProps {
   productId: string;
-  user: User;
+  user: any;
 }
 
 const FavoriteButton: React.FC<FavoriteButtonProps> = ({ productId, user }) => {
