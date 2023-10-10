@@ -1,6 +1,6 @@
 "use client";
 
-import { QueryClientProvider, QueryClient } from "react-query";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { SessionProvider } from "next-auth/react";
 
 // Providers need to be added to layout.tsx

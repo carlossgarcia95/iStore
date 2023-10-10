@@ -11,9 +11,11 @@ const page = async ({ params }: PageProps) => {
   const { slug } = params;
   const product = await db.product.findFirst({
     where: {
-      id: slug,
+      urlName: slug,
     },
   });
+
+  console.log(product)
   return (
     <div className="mx-2 md:container">
       <ProductDetails product={product} />

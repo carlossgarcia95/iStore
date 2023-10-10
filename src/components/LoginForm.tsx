@@ -12,8 +12,8 @@ import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("joe@example.com");
+  const [password, setPassword] = useState("password");
   const { toast } = useToast();
   const router = useRouter();
 
@@ -34,6 +34,13 @@ const LoginForm = () => {
         <Heading title="Login" />
         <CloseModal />
       </div>
+      <div className="text-sm text-slate-500">
+        <p className="font-bold">
+          Test User:
+        </p>
+        <p>Email: joe@example.com</p>
+        <p>Password: password</p>
+      </div>
       <Input
         type="text"
         placeholder="Email"
@@ -51,7 +58,7 @@ const LoginForm = () => {
       <Button onClick={() => login()}>Login</Button>
       <div className="flex items-center justify-center gap-2">
         <hr className="border w-full border-teal-500" />
-        <p className="self-center text-center text-slate-500 w-96">
+        <p className="self-center text-center text-slate-500 min-w-max">
           or log in with{" "}
         </p>
         <hr className="border w-full border-teal-500" />
@@ -68,7 +75,7 @@ const LoginForm = () => {
         Don&apos;t have an account?
         <Link
           href="/register"
-          className="hover:underline text-teal-600 font-bold"
+          className="hover:underline text-teal-600 font-bold pl-1"
         >
           Register
         </Link>

@@ -29,6 +29,7 @@ const RegisterForm = () => {
       });
       toast({
         title: "Account created",
+        variant: "success",
       });
 
       await signIn("credentials", {
@@ -67,15 +68,15 @@ const RegisterForm = () => {
       <Button onClick={() => register()}>Register</Button>
       <div className="flex items-center justify-center gap-2">
         <hr className="border w-full border-teal-500" />
-        <p className="self-center text-center text-slate-500 w-96">
-          or sign up with{" "}
+        <p className="self-center text-center text-slate-500 min-w-max">
+          or sign up with
         </p>
         <hr className="border w-full border-teal-500" />
       </div>
       <Button
-        onClick={() => signIn("google")}
         className="gap-2"
         variant={"subtle"}
+        onClick={() => signIn("google")}
       >
         <FcGoogle size={24} />
         Google

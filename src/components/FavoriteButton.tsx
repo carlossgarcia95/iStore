@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import axios from "axios";
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import { User } from "@prisma/client";
+import { toast, useToast } from "../hooks/useToast";
 
 interface FavoriteButtonProps {
   productId: string;
@@ -12,6 +13,7 @@ interface FavoriteButtonProps {
 const FavoriteButton: React.FC<FavoriteButtonProps> = ({ productId, user }) => {
   const favorites = user.favoriteIds || [];
   const [isFavorite, setIsFavorite] = useState(favorites.includes(productId));
+  const {toast} = useToast()
 
   const { mutate: toggleFavorites } = useMutation({
     mutationFn: async () => {
@@ -20,6 +22,10 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ productId, user }) => {
           await axios.delete("/api/unfavorite", { data: { productId } });
         } else {
           await axios.post("/api/favorite", { productId });
+          toast({
+            description: 'Added to wishlist',
+            variant: "success",
+          })
         }
       } catch (error) {
         console.error("Error:", error);

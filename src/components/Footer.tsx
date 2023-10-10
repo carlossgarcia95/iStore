@@ -9,8 +9,8 @@ import {
 const Footer = () => {
   return (
     <footer
-      className="bg-slate-600
-    text-white text-sm mt-16"
+      className="bg-slate-100
+    text-black text-sm mt-16"
     >
       <div className="container py-10">
         <div className="grid grid-cols-2 md:grid-cols-4 md:flex-row gap-4">
@@ -37,15 +37,15 @@ const Footer = () => {
               We are dedicated to shipping only the highest quality products.
             </p>
             <p className="hidden mt-4 md:block">
-          &copy; {new Date().getFullYear()} iStore. All rights reserved.
-        </p>
+              &copy; {new Date().getFullYear()} iStore. All rights reserved.
+            </p>
             <p></p>
           </div>
           <div className="md:ml-4">
             <h3 className="font-bold mb-2">Follow Us</h3>
             <div className="flex gap-2 items-center">
               <Link href="#">
-                <MdFacebook size={23}/>
+                <MdFacebook size={23} />
               </Link>
               <Link href="#">
                 <AiFillTwitterCircle size={23} />

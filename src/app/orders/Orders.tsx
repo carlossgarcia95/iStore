@@ -72,8 +72,6 @@ const Orders = () => {
               <TableHead>CURRENCY</TableHead>
               <TableHead>STATUS</TableHead>
               <TableHead>DELIVERY STATUS</TableHead>
-
-
             </TableRow>
           </TableHeader>
           <TableBody>

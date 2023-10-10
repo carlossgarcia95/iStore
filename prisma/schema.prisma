@@ -39,12 +39,12 @@ model User {
     role           Role      @default(USER)
     accounts       Account[]
     Order          Order[]
-
 }
 
 model Product {
     id          String  @id @default(auto()) @map("_id") @db.ObjectId
     name        String
+    urlName     String
     description String
     price       Float
     category    String

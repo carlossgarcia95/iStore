@@ -18,11 +18,18 @@ import {
 import { Card } from "@/src/components/ui/Card";
 import { ChevronLeft, Divide } from "lucide-react";
 import { formatPrice } from "@/src/utils/formatPrice";
-import router from "next/router";
+import { useRouter } from "next/navigation";
 import { MdArrowBack } from "react-icons/md";
+import { getAuthSession } from "@/src/lib/auth";
+import { User } from "@prisma/client";
 
-const CartClient = () => {
+interface CartClientProps {
+  user: any;
+}
+
+const CartClient: React.FC<CartClientProps> = ({ user }) => {
   const { cartProducts, cartTotalAmount, handleClearCart } = useCart();
+  const router = useRouter()
 
   if (!cartProducts || cartProducts.length === 0) {
     return (
@@ -72,10 +79,23 @@ const CartClient = () => {
             <p className="text-zinc-500">
               Taxes and shipping calculated at checkout
             </p>
-            <Button onClick={() => router.push("/checkout")} className="w-full">
-              Checkout
-            </Button>
-            <Link className={buttonVariants({ variant: "link" })} href={"/"}>
+            {user ? (
+              <Button
+                onClick={() => router.push("/checkout")}
+                className="w-full"
+              >
+                Checkout
+              </Button>
+            ) : (
+              <Button
+                onClick={() => router.push("/login")}
+                className="w-full"
+                variant={"outline"}
+              >
+                Login to Checkout
+              </Button>
+            )}
+            <Link className={`my-4 ${buttonVariants({ variant: "link" })}`} href={"/"}>
               <ChevronLeft className="h-4 w-4 mr-1" />
               Continue Shopping
             </Link>
