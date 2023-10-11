@@ -44,7 +44,7 @@ const CategoryItem = ({ label, value }: CategoryItemProps) => {
         // TODO: change style if active
       )}
       variant={"subtle"}
-      size={"xs"}
+      size={"sm"}
     >
       {label}
     </Button>

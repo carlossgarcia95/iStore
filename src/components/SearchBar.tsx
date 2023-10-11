@@ -23,8 +23,6 @@ const SearchBar = () => {
   const commandRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
-  console.log(input)
-
   useOnClickOutside(commandRef, () => {
     setInput("");
   });
@@ -87,7 +85,7 @@ const SearchBar = () => {
                   key={product.id}
                   value={product.urlName}
                 >
-                  <a href={`/product/${product.urlName}`}>{product.name}</a>
+                  <a className="w-full" href={`/product/${product.urlName}`}>{product.name}</a>
                 </CommandItem>
               ))}
             </CommandGroup>

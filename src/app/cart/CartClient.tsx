@@ -9,8 +9,6 @@ import { Button, buttonVariants } from "@/src/components/ui/Button";
 import {
   Table,
   TableBody,
-  TableCaption,
-  TableCell,
   TableHead,
   TableHeader,
   TableRow,
@@ -19,17 +17,15 @@ import { Card } from "@/src/components/ui/Card";
 import { ChevronLeft, Divide } from "lucide-react";
 import { formatPrice } from "@/src/utils/formatPrice";
 import { useRouter } from "next/navigation";
-import { MdArrowBack } from "react-icons/md";
-import { getAuthSession } from "@/src/lib/auth";
-import { User } from "@prisma/client";
 
 interface CartClientProps {
   user: any;
 }
 
 const CartClient: React.FC<CartClientProps> = ({ user }) => {
-  const { cartProducts, cartTotalAmount, handleClearCart } = useCart();
-  const router = useRouter()
+  const { cartProducts, cartTotalAmount, handleClearCart, handleCheckout } =
+    useCart();
+  const router = useRouter();
 
   if (!cartProducts || cartProducts.length === 0) {
     return (
@@ -64,7 +60,7 @@ const CartClient: React.FC<CartClientProps> = ({ user }) => {
         <div className="border-t-[1.5px] border-black pt-4 flex flex-col-reverse w-full md:flex-row justify-between gap-1">
           <Button
             variant={"destructive"}
-            size={"sm"}
+            size={"lg"}
             onClick={() => {
               handleClearCart();
             }}
@@ -81,8 +77,9 @@ const CartClient: React.FC<CartClientProps> = ({ user }) => {
             </p>
             {user ? (
               <Button
-                onClick={() => router.push("/checkout")}
+                onClick={() => handleCheckout(cartProducts)}
                 className="w-full"
+                size={"lg"}
               >
                 Checkout
               </Button>
@@ -95,7 +92,10 @@ const CartClient: React.FC<CartClientProps> = ({ user }) => {
                 Login to Checkout
               </Button>
             )}
-            <Link className={`my-4 ${buttonVariants({ variant: "link" })}`} href={"/"}>
+            <Link
+              className={`my-4 md:my-0 ${buttonVariants({ variant: "link" })}`}
+              href={"/"}
+            >
               <ChevronLeft className="h-4 w-4 mr-1" />
               Continue Shopping
             </Link>

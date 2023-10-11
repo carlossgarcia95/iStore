@@ -15,7 +15,6 @@ const page = async ({ params }: PageProps) => {
     },
   });
 
-  console.log(product)
   return (
     <div className="mx-2 md:container">
       <ProductDetails product={product} />

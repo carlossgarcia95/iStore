@@ -1,6 +1,6 @@
 // Include CartProvider in layout.tsx to be able to use cart in all components
 
-import { CartProductType } from "../app/product/[slug]/ProductDetails";
+import { CartProductType } from "@prisma/client";
 import {
   createContext,
   useContext,
@@ -9,6 +9,7 @@ import {
   useEffect,
 } from "react";
 import { useToast } from "./useToast";
+import axios from "axios";
 
 type CartContextType = {
   cartTotalQty: number;
@@ -19,6 +20,7 @@ type CartContextType = {
   handleCartQtyIncrease: (product: CartProductType) => void;
   handleCartQtyDecrease: (product: CartProductType) => void;
   handleClearCart: () => void;
+  handleCheckout: (cartProducts: CartProductType[]) => void;
 };
 
 export const CartContext = createContext<CartContextType | null>(null);
@@ -75,7 +77,7 @@ export const CartContextProvider = (props: Props) => {
       // Success. Send user feedback and add cart item to local storage
       toast({
         description: "Product added to Cart",
-        variant: 'success'
+        variant: "success",
       });
       localStorage.setItem("iStoreCartItems", JSON.stringify(updatedCart));
       return updatedCart;
@@ -91,7 +93,7 @@ export const CartContextProvider = (props: Props) => {
         setCartProducts(filteredProducts);
         toast({
           description: "Product removed from Cart",
-          variant: 'success'
+          variant: "success",
         });
         localStorage.setItem(
           "iStoreCartItems",
@@ -155,6 +157,26 @@ export const CartContextProvider = (props: Props) => {
     localStorage.setItem("iStoreCartItems", JSON.stringify(null));
   }, [cartTotalQty]);
 
+  const handleCheckout = async (cartProducts: CartProductType[]) => {
+    const data = await fetch("/api/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        cartProducts,
+      }),
+    });
+
+    if (data.ok) {
+      handleClearCart();
+      const { url } = await data.json();
+      window.location.href = url;
+    } else {
+      console.log("Failed to create order.");
+    }
+  };
+
   const value = {
     cartTotalQty,
     cartTotalAmount,
@@ -164,6 +186,7 @@ export const CartContextProvider = (props: Props) => {
     handleCartQtyIncrease,
     handleCartQtyDecrease,
     handleClearCart,
+    handleCheckout,
   };
 
   return <CartContext.Provider value={value} {...props} />;

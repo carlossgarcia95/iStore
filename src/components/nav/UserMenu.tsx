@@ -33,10 +33,13 @@ export function UserMenu({ user }: UserMenuProps) {
   return (
     // Desktop
     <Fragment>
-      <div className="hidden md:flex">
+      <div className="hidden md:flex hover:cursor-pointer">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <User2 className="hover:cursor-pointer text-teal-500" size={25} />
+            <User2
+              className="hover:cursor-pointer text-slate-400 hover:text-teal-500 transition"
+              size={25}
+            />
           </DropdownMenuTrigger>
           <DropdownMenuContent className="bg-white" align="end">
             <div className="flex items-center justify-start gap-2 p-2">
@@ -96,12 +99,10 @@ export function UserMenu({ user }: UserMenuProps) {
       </div>
 
       {/* Mobile */}
-      <div className="flex flex-col md:hidden">
+      <div className="flex flex-col md:hidden hover:cursor-pointer">
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="outline" size={"sm"}>
-              <User2 size={25} />
-            </Button>
+            <User2 size={25} className="text-slate-400 hover:text-teal-500"/>
           </SheetTrigger>
           <SheetContent side="right">
             <SheetHeader>
@@ -109,7 +110,7 @@ export function UserMenu({ user }: UserMenuProps) {
               <SheetDescription>{user.email}</SheetDescription>
             </SheetHeader>
             <hr className="mt-4" />
-            <div className="flex flex-col gap-8 py-8">
+            <div className="flex flex-col gap-6 py-4">
               <SheetClose asChild>
                 <Link href="/favorites"> Favorites</Link>
               </SheetClose>
