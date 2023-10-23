@@ -45,7 +45,7 @@ export async function POST(req: Request) {
     const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] =
       cartProducts.map((item) => {
         return {
-          quantity: 1,
+          quantity: item.quantity,
           price_data: {
             currency: "USD",
             product_data: {
@@ -60,11 +60,12 @@ export async function POST(req: Request) {
     const checkoutSession = await stripe.checkout.sessions.create({
       line_items: line_items,
       metadata: {
+        orderId: order.id,
         userId: userSession.user.id,
       },
       mode: "payment",
-      success_url: `http://localhost:3000/orders/success=true`,
-      cancel_url: `http://localhost:3000/orders/canceled=true`,
+      success_url: `${process.env.NEXT_PUBLIC_APP_URL}/checkout/success=true`,
+      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/checkout/canceled=true`,
     });
 
     return NextResponse.json({ url: checkoutSession.url });

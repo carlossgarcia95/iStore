@@ -12,7 +12,7 @@ interface FavoritesProps {
 }
 
 const Favorites: React.FC<FavoritesProps> = async ({ favorites }) => {
-  const session = await getAuthSession();
+
 
   return (
     <div className="mt-8">

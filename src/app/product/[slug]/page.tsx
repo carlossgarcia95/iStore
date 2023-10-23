@@ -18,7 +18,6 @@ const page = async ({ params }: PageProps) => {
   return (
     <div className="mx-2 md:container">
       <ProductDetails product={product} />
-      <div className="flex flex-col mt-20 gap-4"></div>
     </div>
   );
 };

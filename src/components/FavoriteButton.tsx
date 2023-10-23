@@ -1,31 +1,41 @@
-import React, { useState } from "react";
+"use client";
+
+import React, { useMemo, useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import axios from "axios";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { User } from "@prisma/client";
 import { toast, useToast } from "../hooks/useToast";
+import { set } from "lodash";
+import { useRouter } from "next/navigation";
+import { db } from "../lib/db";
 
 interface FavoriteButtonProps {
   productId: string;
-  user: any;
+  user: any | undefined;
 }
 
 const FavoriteButton: React.FC<FavoriteButtonProps> = ({ productId, user }) => {
-  const favorites = user.favoriteIds || [];
+  const [favorites, setFavorites] = useState(user.favoriteIds || []);
   const [isFavorite, setIsFavorite] = useState(favorites.includes(productId));
-  const {toast} = useToast()
+  const { toast } = useToast();
+  const router = useRouter();
 
   const { mutate: toggleFavorites } = useMutation({
     mutationFn: async () => {
       try {
         if (isFavorite) {
-          await axios.delete("/api/unfavorite", { data: { productId } });
+          await axios.delete("/api/unfavorite", {
+            data: { productId },
+          });
+          setIsFavorite(!isFavorite);
         } else {
           await axios.post("/api/favorite", { productId });
           toast({
-            description: 'Added to wishlist',
+            description: "Added to wishlist",
             variant: "success",
-          })
+          });
+          setIsFavorite(!isFavorite);
         }
       } catch (error) {
         console.error("Error:", error);
@@ -33,7 +43,12 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ productId, user }) => {
       }
     },
     onSuccess: () => {
-      setIsFavorite(!isFavorite);
+      if (isFavorite) {
+        setFavorites([...favorites, productId]);
+      } else {
+        setFavorites(favorites.filter((id: any) => id !== productId));
+      }
+      router.refresh();
     },
   });
 

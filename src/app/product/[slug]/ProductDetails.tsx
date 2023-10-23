@@ -94,13 +94,13 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
           Shop
         </Link>
       </div>
-      <Card className="flex flex-col mx-auto md:flex-row gap-6 items-center p-10 max-w-5xl">
+      <Card className="flex flex-col p-10 mx-auto md:flex-row gap-4 items-center max-w-5xl mb-4">
         <ProductImage
           cartProduct={cartProduct}
           product={product}
           handleColorSelect={handleColorSelect}
         />
-        <div className="flex flex-col gap-2 md:gap-4 text-zinc-600">
+        <div className="flex flex-col gap-2 text-zinc-600">
           <h2 className="text-2xl font-medium text-zinc-700 text-center md:text-3xl">
             {product.name}
           </h2>

@@ -1,5 +1,3 @@
-"use client";
-
 import CategoryItem from "./CategoryItem";
 
 interface CategoriesProps {

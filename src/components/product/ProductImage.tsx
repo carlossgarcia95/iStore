@@ -14,8 +14,6 @@ interface ProductImageProps {
 
 const ProductImage: React.FC<ProductImageProps> = ({
   cartProduct,
-  product,
-  handleColorSelect,
 }) => {
   return (
     <div className="w-1/2 flex items-center justify-center">

@@ -1,3 +1,5 @@
+'use client'
+
 import { Button } from "@/src/components/ui/Button";
 import { cn } from "@/src/lib/utils";
 import {

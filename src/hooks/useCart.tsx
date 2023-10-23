@@ -158,24 +158,26 @@ export const CartContextProvider = (props: Props) => {
   }, [cartTotalQty]);
 
   const handleCheckout = async (cartProducts: CartProductType[]) => {
-    const data = await fetch("/api/checkout", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+    try {
+      const response = await axios.post("/api/checkout", {
         cartProducts,
-      }),
-    });
+      });
 
-    if (data.ok) {
-      handleClearCart();
-      const { url } = await data.json();
-      window.location.href = url;
-    } else {
-      console.log("Failed to create order.");
+      if (response.status === 200) {
+        const { url } = response.data;
+        window.location.href = url;
+      } else {
+        console.log("Failed to create order.");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
     }
   };
+
+  // Add an event listener to execute handleClearCart after the page has been changed
+  window.addEventListener("load", () => {
+    handleClearCart();
+  });
 
   const value = {
     cartTotalQty,

@@ -1,6 +1,7 @@
 import Favorites from "@/src/components/Favorites";
 import { getAuthSession } from "@/src/lib/auth";
 import { db } from "@/src/lib/db";
+import axios from "axios";
 
 const Page = async () => {
   const session = await getAuthSession();
@@ -16,7 +17,7 @@ const Page = async () => {
 
   return (
     <div>
-      <Favorites favorites={favorites} />
+      <Favorites favorites={favorites}/>
     </div>
   );
 };

@@ -31,7 +31,7 @@ export async function POST(req: Request) {
 
     return new Response(JSON.stringify(user));
   } catch (err) {
-    return new Response("Could not favorite. Please try again.", {
+    return new Response("Could not get favorite. Please try again.", {
       status: 500,
     });
   }
