@@ -1,13 +1,11 @@
-import Stripe from "stripe";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
+import Stripe from "stripe";
 
-import { stripe } from "@/src/lib/stripe";
 import { db } from "@/src/lib/db";
-import { useCart } from "@/src/hooks/useCart";
+import { stripe } from "@/src/lib/stripe";
 
 export async function POST(req: Request) {
-  const { handleClearCart } = useCart();
   const body = await req.text();
   const signature = headers().get("Stripe-Signature") as string;
   let event: Stripe.Event;
@@ -43,6 +41,5 @@ export async function POST(req: Request) {
     },
   });
 
-  handleClearCart()
   return new NextResponse(null, { status: 200 });
 }

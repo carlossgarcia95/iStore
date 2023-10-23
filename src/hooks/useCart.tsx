@@ -10,6 +10,7 @@ import {
 } from "react";
 import { useToast } from "./useToast";
 import axios from "axios";
+import { delay } from "lodash";
 
 type CartContextType = {
   cartTotalQty: number;
@@ -166,6 +167,7 @@ export const CartContextProvider = (props: Props) => {
       if (response.status === 200) {
         const { url } = response.data;
         window.location.href = url;
+        delay(handleClearCart, 6000);
       } else {
         console.log("Failed to create order.");
       }

@@ -16,7 +16,7 @@ export default async function Home({ searchParams }: Props) {
   });
 
   let categories = [];
-  const products = await db.product.findMany()
+  const products = await db.product.findMany();
   categories = products.map((product: any) => product.category);
   let uniqueCategories = new Set(categories);
 
