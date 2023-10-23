@@ -16,16 +16,16 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 md:flex-row gap-4">
           <div className="flex flex-col gap-2">
             <h3 className="font-bold mb-2">Categoies</h3>
-            <Link href="#">Phones</Link>
-            <Link href="#">Laptops</Link>
-            <Link href="#">Desktops</Link>
-            <Link href="#">Watches</Link>
-            <Link href="#">Tvs</Link>
             <Link href="#">Accessories</Link>
+            <Link href="#">Computers</Link>
+            <Link href="#">Multimedia</Link>
+            <Link href="#">Smartphone</Link>
+            <Link href="#">Smartwatches</Link>
+            <Link href="#">Tablets</Link>
           </div>
           <div className="flex flex-col gap-2">
             <h3 className="font-bold mb-2">Customer Services</h3>
-            <Link href="#">Orders</Link>
+            <Link href="/orders">Orders</Link>
             <Link href="#">Shipping Policy</Link>
             <Link href="#">Returns & Exchanges</Link>
             <Link href="#">FAQs</Link>

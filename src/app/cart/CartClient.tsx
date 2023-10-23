@@ -1,11 +1,8 @@
 "use client";
 
-import Heading from "@/src/components/ui/Heading";
-import { useCart } from "@/src/hooks/useCart";
-import Image from "next/image";
-import CartItem from "./CartItem";
-import Link from "next/link";
 import { Button, buttonVariants } from "@/src/components/ui/Button";
+import { Card } from "@/src/components/ui/Card";
+import Heading from "@/src/components/ui/Heading";
 import {
   Table,
   TableBody,
@@ -13,18 +10,19 @@ import {
   TableHeader,
   TableRow,
 } from "@/src/components/ui/Table";
-import { Card } from "@/src/components/ui/Card";
-import { ChevronLeft, Divide } from "lucide-react";
+import { useCart } from "@/src/hooks/useCart";
 import { formatPrice } from "@/src/utils/formatPrice";
+import { ChevronLeft } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import CartItem from "./CartItem";
 
 interface CartClientProps {
   user: any;
 }
 
 const CartClient: React.FC<CartClientProps> = ({ user }) => {
-  const { cartProducts, cartTotalAmount, handleClearCart, handleCheckout } =
-    useCart();
+  const { cartProducts, cartTotalAmount, handleClearCart, handleCheckout } = useCart();
   const router = useRouter();
 
   if (!cartProducts || cartProducts.length === 0) {

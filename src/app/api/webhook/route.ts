@@ -4,8 +4,10 @@ import { NextResponse } from "next/server";
 
 import { stripe } from "@/src/lib/stripe";
 import { db } from "@/src/lib/db";
+import { useCart } from "@/src/hooks/useCart";
 
 export async function POST(req: Request) {
+  const { handleClearCart } = useCart();
   const body = await req.text();
   const signature = headers().get("Stripe-Signature") as string;
   let event: Stripe.Event;
@@ -41,5 +43,6 @@ export async function POST(req: Request) {
     },
   });
 
+  handleClearCart()
   return new NextResponse(null, { status: 200 });
 }

@@ -35,7 +35,7 @@ const CheckoutPage = () => {
         <div className="flex flex-col gap-4">
           <Heading title="Transaction unsuccessful" center />
           <p className="text-center mt-2 text-red-500">
-            There was an issue processing your payment. Check with your bank and try again.
+            There was an issue processing your payment. Please check card details and try again.
           </p>
           <Link className={buttonVariants({ variant: "link" })} href={"/"}>
             <ChevronLeft className="h-4 w-4 mr-1" />

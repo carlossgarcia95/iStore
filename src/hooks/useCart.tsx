@@ -174,11 +174,6 @@ export const CartContextProvider = (props: Props) => {
     }
   };
 
-  // Add an event listener to execute handleClearCart after the page has been changed
-  window.addEventListener("load", () => {
-    handleClearCart();
-  });
-
   const value = {
     cartTotalQty,
     cartTotalAmount,
