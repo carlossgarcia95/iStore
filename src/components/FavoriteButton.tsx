@@ -1,14 +1,11 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { User } from "@prisma/client";
-import { toast, useToast } from "../hooks/useToast";
-import { set } from "lodash";
 import { useRouter } from "next/navigation";
-import { db } from "../lib/db";
+import React, { useState } from "react";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { useToast } from "../hooks/useToast";
 
 interface FavoriteButtonProps {
   productId: string;

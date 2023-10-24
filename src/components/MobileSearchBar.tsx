@@ -68,7 +68,7 @@ const MobileSearchBar = () => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Search size={25} className=" text-slate-400 hover:text-teal-500 transition"/>
+        <Search size={25} className=" text-slate-600"/>
       </SheetTrigger>
       <SheetContent side="top">
         <SheetHeader>

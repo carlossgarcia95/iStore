@@ -17,11 +17,11 @@ const CartCount = () => {
     >
       <div className="text-sm">
         <span
-          className={`absolute top-[0px] -right-[4px] border border-slate-400 bg-white text-black group-hover:border-teal-500  h-4 w-4 rounded-full flex items-center justify-center text-sm font-semibold`}
+          className={`absolute top-[0px] -right-[4px] border border-slate-600 bg-white text-black h-4 w-4 rounded-full flex items-center justify-center text-sm font-semibold`}
         >
           {cartTotalQty}
         </span>
-        <LiaShoppingBagSolid size={28} className="text-slate-400 group-hover:text-teal-500 transition" />
+        <LiaShoppingBagSolid size={28} className="text-slate-600" />
       </div>
     </div>
   );

@@ -36,10 +36,7 @@ export function UserMenu({ user }: UserMenuProps) {
       <div className="hidden md:flex hover:cursor-pointer">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <User2
-              className="hover:cursor-pointer text-slate-400 hover:text-teal-500 transition"
-              size={25}
-            />
+            <User2 className="hover:cursor-pointer text-slate-600" size={25} />
           </DropdownMenuTrigger>
           <DropdownMenuContent className="bg-white" align="end">
             <div className="flex items-center justify-start gap-2 p-2">
@@ -66,21 +63,6 @@ export function UserMenu({ user }: UserMenuProps) {
               </Link>
             </DropdownMenuItem>
 
-            <DropdownMenuItem asChild>
-              <Link href="/dashboard">
-                {" "}
-                <AreaChart className="mr-2 h-4 w-4" />
-                Admin Dashboard
-              </Link>
-            </DropdownMenuItem>
-
-            <DropdownMenuItem asChild>
-              <Link href="/settings">
-                {" "}
-                <Settings className="mr-2 h-4 w-4" />
-                Settings
-              </Link>
-            </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onSelect={(event) => {
@@ -102,7 +84,7 @@ export function UserMenu({ user }: UserMenuProps) {
       <div className="flex flex-col md:hidden hover:cursor-pointer">
         <Sheet>
           <SheetTrigger asChild>
-            <User2 size={25} className="text-slate-400 hover:text-teal-500"/>
+            <User2 size={25} className="text-slate-600" />
           </SheetTrigger>
           <SheetContent side="right">
             <SheetHeader>

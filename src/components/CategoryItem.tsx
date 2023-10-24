@@ -1,13 +1,7 @@
-'use client'
+"use client";
 
-import { Button } from "@/src/components/ui/Button";
-import { cn } from "@/src/lib/utils";
-import {
-  useParams,
-  usePathname,
-  useRouter,
-  useSearchParams,
-} from "next/navigation";
+import { Button, buttonVariants } from "@/src/components/ui/Button";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";
 
 interface CategoryItemProps {
@@ -41,11 +35,11 @@ const CategoryItem = ({ label, value }: CategoryItemProps) => {
   return (
     <Button
       onClick={onClick}
-      className={cn(
-        "min-w-max rounded-md px-4"
-        // TODO: change style if active
-      )}
-      variant={"subtle"}
+      className={buttonVariants({
+        variant: "subtle",
+        className: `${isSelected && "border bg-zinc-200"}
+      min-w-max rounded-md px-4 `,
+      })}
       size={"sm"}
     >
       {label}

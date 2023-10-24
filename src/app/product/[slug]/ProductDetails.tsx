@@ -1,16 +1,16 @@
 "use client";
 
 import ProductImage from "@/src/components/product/ProductImage";
+import SetColor from "@/src/components/product/SetColor";
+import SetQuantity from "@/src/components/product/SetQuantity";
 import { Button, buttonVariants } from "@/src/components/ui/Button";
+import { Card } from "@/src/components/ui/Card";
+import { useCart } from "@/src/hooks/useCart";
+import { ChevronLeft } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { MdCheckCircle } from "react-icons/md";
-import { useCart } from "@/src/hooks/useCart";
-import SetColor from "@/src/components/product/SetColor";
-import SetQuantity from "@/src/components/product/SetQuantity";
-import Link from "next/link";
-import { ChevronLeft, Ban } from "lucide-react";
-import { Card } from "@/src/components/ui/Card";
 
 interface ProductDetailsProps {
   product: any;
@@ -111,7 +111,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
             <span className="font-semibold">CATEGORY: </span>
             {product.category}
           </div>
-          <div className={product.inStock ? "text-green-600" : "text-red-500"}>
+          <div className={product.inStock ? "text-green-600 font-semibold" : "text-red-500 font-semibold"}>
             {product.inStock ? "In stock" : "Out of stock"}
           </div>
           <Horizontal />
@@ -153,7 +153,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
                   </Button>
                 ) : (
                   <Button
-                    className="w-full disabled:opacity-75 cursor-not-allowed"
+                    className="w-full disabled:opacity-50 hover:bg-teal-500 cursor-not-allowed"
                     disabled
                   >
                     Add to Cart

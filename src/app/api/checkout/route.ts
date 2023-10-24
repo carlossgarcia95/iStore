@@ -30,7 +30,7 @@ export async function POST(req: Request) {
         user: { connect: { id: userSession.user.id } },
         amount: total,
         currency: "USD",
-        status: "UNPAID",
+        status: "PAID",
         products: cartProducts,
         address: {
           city: "San Diego",
