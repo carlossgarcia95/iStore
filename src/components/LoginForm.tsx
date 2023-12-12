@@ -57,11 +57,11 @@ const LoginForm = () => {
       />
       <Button onClick={() => login()}>Login</Button>
       <div className="flex items-center justify-center gap-2">
-        <hr className="border w-full border-teal-500" />
+        <hr className="border w-full border-blue-500" />
         <p className="self-center text-center text-slate-500 min-w-max">
           or log in with{" "}
         </p>
-        <hr className="border w-full border-teal-500" />
+        <hr className="border w-full border-blue-500" />
       </div>
       <Button
         className="gap-2"
@@ -75,7 +75,7 @@ const LoginForm = () => {
         Don&apos;t have an account?
         <Link
           href="/register"
-          className="hover:underline text-teal-600 font-bold pl-1"
+          className="hover:underline text-blue-600 font-bold pl-1"
         >
           Register
         </Link>

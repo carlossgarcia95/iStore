@@ -118,7 +118,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
           {isProductInCart ? (
             <>
               <p className="mb-2 text-zinc-500 flex items-center gap-1">
-                <MdCheckCircle size={20} className="text-teal-500" />
+                <MdCheckCircle size={20} className="text-blue-500" />
                 <span>Product added to cart</span>
               </p>
               <Button
@@ -153,7 +153,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
                   </Button>
                 ) : (
                   <Button
-                    className="w-full disabled:opacity-50 hover:bg-teal-500 cursor-not-allowed"
+                    className="w-full disabled:opacity-50 hover:bg-blue-500 cursor-not-allowed"
                     disabled
                   >
                     Add to Cart

@@ -67,11 +67,11 @@ const RegisterForm = () => {
       />
       <Button onClick={() => register()}>Register</Button>
       <div className="flex items-center justify-center gap-2">
-        <hr className="border w-full border-teal-500" />
+        <hr className="border w-full border-blue-500" />
         <p className="self-center text-center text-slate-500 min-w-max">
           or sign up with
         </p>
-        <hr className="border w-full border-teal-500" />
+        <hr className="border w-full border-blue-500" />
       </div>
       <Button
         className="gap-2"
@@ -83,7 +83,7 @@ const RegisterForm = () => {
       </Button>
       <p className="text-slate-500">
         Already have an account?{" "}
-        <Link href="/login" className="hover:underline text-teal-600 font-bold">
+        <Link href="/login" className="hover:underline text-blue-600 font-bold">
           Log In
         </Link>
       </p>

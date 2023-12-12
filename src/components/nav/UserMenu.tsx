@@ -7,7 +7,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/src/components/ui/DropdownMenu";
-import { Box, Heart, LogOut, User2 } from "lucide-react";
+import { Box, Heart, LogOut, User2, Cog, AreaChart } from "lucide-react";
 import { User } from "next-auth";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
@@ -64,14 +64,14 @@ export function UserMenu({ user }: UserMenuProps) {
             <DropdownMenuItem asChild>
               <Link href="/#">
                 {" "}
-                <Box className="mr-2 h-4 w-4" />
+                <AreaChart className="mr-2 h-4 w-4" />
                 Dashboard
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
               <Link href="/#">
                 {" "}
-                <Box className="mr-2 h-4 w-4" />
+                <Cog className="mr-2 h-4 w-4" />
                 Settings
               </Link>
             </DropdownMenuItem>

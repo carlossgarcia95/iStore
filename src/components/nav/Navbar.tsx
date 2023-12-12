@@ -13,7 +13,7 @@ const Navbar = async () => {
     <div className="p-2 top-0 w-full z-30 shadow-sm bg-opacity-95 bg-white backdrop-blur-md">
       <div className="md:container px-2 max-w-7xl h-full mx-auto flex items-center justify-between gap-2">
         <Link href="/" className="flex items-center gap-1 font-light text-2xl text-slate-700">
-          <Cpu className="text-teal-500"/>
+          <Cpu className="text-blue-500"/>
           iStore
         </Link>
         <div className="hidden md:flex w-full justify-center">
