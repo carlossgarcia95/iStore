@@ -122,7 +122,7 @@ export const CartContextProvider = (props: Props) => {
       );
 
       setCartProducts(updatedCart);
-      localStorage.setItem("iStoreI", JSON.stringify(updatedCart));
+      localStorage.setItem("iStoreCartItems", JSON.stringify(updatedCart));
     },
     [cartProducts]
   );
