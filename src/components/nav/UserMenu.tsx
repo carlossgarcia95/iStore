@@ -1,8 +1,5 @@
 "use client";
 
-import { User2 } from "lucide-react";
-import Link from "next/link";
-import { LogOut, Settings, AreaChart, Heart, Box } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,10 +7,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/src/components/ui/DropdownMenu";
-import { signOut } from "next-auth/react";
+import { Box, Heart, LogOut, User2 } from "lucide-react";
 import { User } from "next-auth";
-import { Button, buttonVariants } from "../ui/Button";
+import { signOut } from "next-auth/react";
+import Link from "next/link";
 import { Fragment } from "react";
+import { buttonVariants } from "../ui/Button";
 import {
   Sheet,
   SheetClose,
@@ -62,6 +61,20 @@ export function UserMenu({ user }: UserMenuProps) {
                 Orders
               </Link>
             </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/#">
+                {" "}
+                <Box className="mr-2 h-4 w-4" />
+                Dashboard
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/#">
+                {" "}
+                <Box className="mr-2 h-4 w-4" />
+                Settings
+              </Link>
+            </DropdownMenuItem>
 
             <DropdownMenuSeparator />
             <DropdownMenuItem
@@ -94,16 +107,16 @@ export function UserMenu({ user }: UserMenuProps) {
             <hr className="mt-4" />
             <div className="flex flex-col gap-6 py-4">
               <SheetClose asChild>
-                <Link href="/favorites"> Favorites</Link>
+                <Link href="/favorites">Favorites</Link>
               </SheetClose>
               <SheetClose asChild>
-                <Link href="/orders"> Orders</Link>
+                <Link href="/orders">Orders</Link>
               </SheetClose>
               <SheetClose asChild>
-                <Link href="/dashboard">Dashboard</Link>
+                <Link href="/#">Dashboard</Link>
               </SheetClose>
               <SheetClose asChild>
-                <Link href="/settings">Settings</Link>
+                <Link href="/#">Settings</Link>
               </SheetClose>
             </div>
             <hr className="mb-4" />

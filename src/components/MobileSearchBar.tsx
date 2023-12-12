@@ -1,15 +1,13 @@
 "use client";
 
-import { User2, Link, Search } from "lucide-react";
-import { signOut } from "next-auth/react";
-import { buttonVariants } from "./ui/Button";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetHeader,
-  SheetTrigger,
-} from "./ui/Sheet";
+import { Product } from "@prisma/client";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { debounce } from "lodash";
+import { Search } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useOnClickOutside } from "../hooks/useOnClickOutside";
 import {
   Command,
   CommandEmpty,
@@ -18,19 +16,15 @@ import {
   CommandItem,
   CommandList,
 } from "./ui/Command";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
-import { useOnClickOutside } from "../hooks/useOnClickOutside";
-import { debounce } from "lodash";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import { Product } from "@prisma/client";
+import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "./ui/Sheet";
+import { columns } from "../app/orders/Orders";
 
 const MobileSearchBar = () => {
   const [input, setInput] = useState<string>("");
   const pathname = usePathname();
   const commandRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const [searchIsOpen, setSearchIsOpen] = useState(false)
 
   useOnClickOutside(commandRef, () => {
     setInput("");
@@ -66,9 +60,9 @@ const MobileSearchBar = () => {
   }, [pathname]);
 
   return (
-    <Sheet>
-      <SheetTrigger asChild>
-        <Search size={25} className=" text-slate-600"/>
+    <Sheet open={searchIsOpen} onOpenChange={setSearchIsOpen}>
+      <SheetTrigger>
+        <Search size={25} className=" text-slate-600" />
       </SheetTrigger>
       <SheetContent side="top">
         <SheetHeader>
@@ -80,6 +74,12 @@ const MobileSearchBar = () => {
               onValueChange={(text) => {
                 setInput(text);
                 debounceRequest();
+              }}
+              onKeyDown={(e) => {
+                if(e.key === "Enter") {
+                  setSearchIsOpen(!searchIsOpen)
+                  setInput('')
+                }
               }}
               value={input}
               className="outline-none border-none focus:border-none focus:outline-none ring-0"
@@ -95,12 +95,21 @@ const MobileSearchBar = () => {
                       <CommandItem
                         onSelect={(e) => {
                           router.push(`/product/${e}`);
+                          console.log("Enter pressed")
                           router.refresh();
+                        }}
+                        onKeyDown={(e) => {
+                          if(e.key === 'Enter') {
+                            console.log("Enter pressed")
+                          }
                         }}
                         key={product.id}
                         value={product.urlName}
                       >
-                        <a className="w-full text-left" href={`/product/${product.urlName}`}>
+                        <a
+                          className="w-full text-left"
+                          href={`/product/${product.urlName}`}
+                        >
                           {product.name}
                         </a>
                       </CommandItem>

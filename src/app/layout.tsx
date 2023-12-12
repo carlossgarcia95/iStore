@@ -1,15 +1,11 @@
 import Navbar from "@/src/components/nav/Navbar";
-import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import Footer from "../components/Footer";
-import { Toaster } from "../components/ui/Toaster";
-import { CartContext } from "../hooks/useCart";
-import CartProvider from "../providers/CartProvider";
 import Providers from "../components/Provider";
-
-const inter = Inter({ subsets: ["latin"] });
-
+import { Toaster } from "../components/ui/Toaster";
+import { inter } from "../components/ui/fonts";
+import CartProvider from "../providers/CartProvider";
+import "./globals.css";
 export const metadata: Metadata = {
   title: "iStore",
   description: "Apple products e-commerce store ",
